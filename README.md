@@ -1,5 +1,5 @@
-# openEHR Technical Course
-This repo includes the code for the openEHR Technical Course.
+# openEHR Bootcamp
+This repo includes the code for the openEHR Bootcamp.
 
 ## Prerequisites
 - [Docker](https://docs.docker.com/get-docker/)
