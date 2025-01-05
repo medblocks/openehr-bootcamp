@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      EHRBASE_USER_ADMIN: ehrbase
+      EHRBASE_PASSWORD_ADMIN: ehrbase
+      EHRBASE_USER: ehrbase_restricted
+      EHRBASE_PASSWORD: ehrbase_restricted
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      # to persist the data
+      - ehrbase_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  ehrbase:
+    image: ehrbase/ehrbase:2.11.0
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/ehrbase
+      DB_USER_ADMIN: ehrbase
+      DB_PASS_ADMIN: ehrbase
+      DB_USER: ehrbase_restricted
+      DB_PASS: ehrbase_restricted
+      EHRBASE_AQL_EXPERIMENTAL_AQLONFOLDER_ENABLED: 'true'
+    ports:
+      - "8080:8080"
+volumes:
+  ehrbase_data:
