@@ -15,18 +15,18 @@ services:
     ports:
       - "5432:5432"
 
-  pgweb:
-    image: sosedoff/pgweb
-    restart: always
-    ports:
-      - "8081:8081"
-    entrypoint: /bin/sh
-    command:
-      - "-c"
-      - "pgweb --host db --user postgres --pass postgres --db ehrbase --ssl disable --bind 0.0.0.0 --listen 8081"
-    depends_on:
-      - db
-      - ehrbase
+#  pgweb:
+#    image: sosedoff/pgweb
+#    restart: always
+#    ports:
+#      - "8081:8081"
+#    entrypoint: /bin/sh
+#    command:
+#      - "-c"
+#      - "pgweb --host db --user postgres --pass postgres --db ehrbase --ssl disable --bind 0.0.0.0 --listen 8081"
+#    depends_on:
+#      - db
+#      - ehrbase
 
   ehrbase:
     image: ehrbase/ehrbase:2.11.0
