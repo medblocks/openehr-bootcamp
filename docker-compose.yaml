@@ -23,6 +23,11 @@ services:
       DB_USER: ehrbase_restricted
       DB_PASS: ehrbase_restricted
       EHRBASE_AQL_EXPERIMENTAL_AQLONFOLDER_ENABLED: 'true'
+      # CORS configuration
+      WEB_CORS_ALLOWEDORIGINS: "*"
+      WEB_CORS_ALLOWEDORIGINPATTERNS: "*"
+      WEB_CORS_ALLOWEDMETHODS: "GET,PUT,DELETE,POST,OPTIONS"
+      WEB_CORS_ALLOWCREDENTIALS: "false"
     ports:
       - "8080:8080"
 volumes:
